@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fsc_ibb/utils/colors.dart';
 import 'package:fsc_ibb/utils/network.dart';
 import 'package:fsc_ibb/views/home/home_view.dart';
+import 'package:fsc_ibb/views/login/login_view.dart';
 import 'package:fsc_ibb/views/on_board/on_board_view.dart';
+import 'package:fsc_ibb/views/profile/profile_view.dart';
+import 'package:fsc_ibb/views/sign_up/sign_up_view.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:stacked/stacked.dart';
 import 'splash_view_model.dart';
@@ -20,7 +23,7 @@ class SplashView extends StatelessWidget {
             image: Image.network(SplashNetworkImage().splashLogoImage),
             photoSize: 200,
             seconds: 3,
-            navigateAfterSeconds: HomeView(),
+            navigateAfterSeconds: SignUpView(),
             loaderColor: SplashColors().loaderColor,
             backgroundColor: SplashColors().bgColor,
             title: Text('Medical App'),
