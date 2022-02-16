@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:fsc_ibb/utils/colors.dart';
+import 'package:fsc_ibb/widgets/custom_widgets/main_text.dart';
 
 class DetailTitle extends StatelessWidget {
   const DetailTitle({
-    Key key, this.title,
+    Key key,
+    this.title, this.onpressed,
   }) : super(key: key);
 
   final String title;
+  final VoidCallback onpressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,19 +18,16 @@ class DetailTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            title,
-            style: GoogleFonts.roboto(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+          MainText(
+            text: title,
+            size: 20,
+            color: HomeColors().nameColor,
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: onpressed,
               icon: const Icon(
                 Icons.arrow_forward,
-                color: Colors.black,
+                color: Color.fromRGBO(25, 99, 176, 1),
               )),
         ],
       ),

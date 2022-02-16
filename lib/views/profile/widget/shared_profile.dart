@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fsc_ibb/utils/colors.dart';
+import 'package:fsc_ibb/widgets/custom_widgets/main_text.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SharedProfile extends StatelessWidget {
   const SharedProfile({
@@ -7,33 +10,47 @@ class SharedProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = MediaQuery.of(context).size;
     return SizedBox(
-      width: 350,
-      height: 100,
+      width: s.width / 1.1,
+      height: s.height / 10,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: 90,
-            height: 45,
+            width: s.width/ 4,
+            height: s.height/15,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24),
-              color: Colors.blue,
+              borderRadius: BorderRadius.circular(20),
+              color: MainColors().lightBlue,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text('8 Dec'),
-                Text('8:30 AM'),
+              children: [
+                Text('8 Dec', style: GoogleFonts.roboto(color: HomeColors().nameColor, fontWeight: FontWeight.w500)),
+                Text('8:30', style: GoogleFonts.roboto(color: HomeColors().nameColor),)
               ],
             ),
           ),
+          SizedBox(
+            width: s.width/20,
+          ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text('Anna Kowalsky'),
-              Text('7 views')
+            children: [
+              MainText(
+                text: 'Anna Kowalsky',
+                color: HomeColors().nameColor,
+                size: 17,
+              ),
+              MainText(
+                text: '7 views',
+                color: MainColors().appGreen,
+                size: 12,
+              ),
             ],
           )
         ],

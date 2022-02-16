@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fsc_ibb/utils/colors.dart';
+import 'package:fsc_ibb/widgets/custom_widgets/main_text.dart';
 
 class ShareProfile extends StatelessWidget {
   const ShareProfile({
@@ -7,33 +9,39 @@ class ShareProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = MediaQuery.of(context).size;
     return Container(
-      width: 350,
-      height: 75,
+      width: s.width / 1.1,
+      height: s.height / 10,
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: OnBoardColors().bgColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-            vertical: 20, horizontal: 25),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Share your \npatient profile'),
+            const MainText(
+              text: 'Share your \npatient profile',
+              size: 13,
+            ),
             // ignore: prefer_const_constructors
             SizedBox(
-              width: 50,
+              width: s.width / 8,
             ),
             GestureDetector(
               onTap: () {},
               child: Container(
                 alignment: Alignment.center,
-                width: 150,
-                height: 50,
-                child: const Text('Share profile'),
+                width: s.width / 2.8,
+                height: s.height / 10,
+                child: const MainText(
+                  text: 'Share profile',
+                  size: 13,
+                ),
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: MainColors().appGreen,
                   borderRadius: BorderRadius.circular(40),
                 ),
               ),

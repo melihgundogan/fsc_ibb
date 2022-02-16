@@ -17,11 +17,6 @@
             "view_name": "HomeView"
         },
         {
-            "file_path": "views/help/help_view.dart",
-            "route_name": "helpViewRoute",
-            "view_name": "HelpView"
-        },
-        {
             "file_path": "views/profile/profile_view.dart",
             "route_name": "profileViewRoute",
             "view_name": "ProfileView"

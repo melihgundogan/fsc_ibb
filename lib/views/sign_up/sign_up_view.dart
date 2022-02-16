@@ -1,10 +1,12 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:fsc_ibb/utils/colors.dart';
 import 'package:fsc_ibb/utils/network.dart';
-import 'package:fsc_ibb/views/login/widget/gap.dart';
+import 'package:fsc_ibb/widgets/custom_widgets/main_text.dart';
 import 'package:fsc_ibb/widgets/custom_widgets/text_field.dart';
 import 'package:stacked/stacked.dart';
+import '../login/widget/login_gap.dart';
 import 'sign_up_view_model.dart';
           
 class SignUpView extends StatefulWidget {
@@ -34,6 +36,9 @@ class _SignUpViewState extends State<SignUpView> {
 
   @override
   Widget build(BuildContext context) {
+
+    final s = MediaQuery.of(context).size;
+    
     return ViewModelBuilder<SignUpViewModel>.reactive(
       builder: (BuildContext context, SignUpViewModel viewModel, Widget _) {
         return Scaffold(
@@ -54,12 +59,7 @@ class _SignUpViewState extends State<SignUpView> {
                     const Gap(),
                     Stack(
                       children: [
-                        /*_image != null
-                            ? CircleAvatar(
-                                radius: 64,
-                                backgroundImage: MemoryImage(_image!),
-                              )
-                            : */const CircleAvatar(
+                        const CircleAvatar(
                                 radius: 64,
                                 backgroundImage: NetworkImage(
                                     "https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"),
@@ -118,21 +118,19 @@ class _SignUpViewState extends State<SignUpView> {
                     InkWell(
                       onTap: (){},
                       child: Container(
-                        child: _isLoading
-                            ? const Center(
-                                child: CircularProgressIndicator(
-                                  color: Colors.blue,
-                                ),
-                              )
-                            : const Text("Sign Up"),
+                        child:
+                           MainText(
+                             text: 'Sign Up',
+                             size: 13,
+                           ),
                         width: double.infinity,
                         alignment: Alignment.center,
                         padding: const EdgeInsets.symmetric(vertical: 12),
-                        decoration: const ShapeDecoration(
-                          shape: RoundedRectangleBorder(
+                        decoration: ShapeDecoration(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(4)),
                           ),
-                          color: Colors.green,
+                          color: MainColors().appGreen,
                         ),
                       ),
                     ),

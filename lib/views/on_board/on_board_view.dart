@@ -1,16 +1,24 @@
+library on_board;
+
 import 'package:flutter/material.dart';
 import 'package:fsc_ibb/utils/colors.dart';
 import 'package:fsc_ibb/utils/network.dart';
-import 'package:fsc_ibb/views/home/home_view.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:fsc_ibb/views/on_board/widget/on_board_photo.dart';
+import 'package:fsc_ibb/widgets/custom_widgets/main_text.dart';
 import 'package:stacked/stacked.dart';
 import 'on_board_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+part 'on_board_view_body.dart';
+part 'on_board_view_bottom.dart';
 
 class OnBoardView extends StatelessWidget {
   const OnBoardView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final s = MediaQuery.of(context).size;
+
     return ViewModelBuilder<OnBoardViewModel>.reactive(
       builder: (BuildContext context, OnBoardViewModel viewModel, Widget _) {
         return Material(
@@ -20,84 +28,29 @@ class OnBoardView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 120,
+                SizedBox(
+                  height: s.height / 7.5,
                 ),
-                Text(
-                  'Virtual',
-                  style: GoogleFonts.roboto(
-                      fontSize: 36,
-                      color: const Color.fromRGBO(0, 220, 167, 1),
-                      fontWeight: FontWeight.bold,
-                      wordSpacing: 3),
+                MainText(
+                  text: AppLocalizations.of(context).virtual,
+                  color: OnBoardColors().virtualColor,
                 ),
-                Text('Ecosystem.',
-                    style: GoogleFonts.roboto(
-                        fontSize: 36,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        wordSpacing: 3)),
-                const SizedBox(
-                  height: 20,
+                MainText(
+                  text: AppLocalizations.of(context).ecosystem,
                 ),
-                Text(
-                  'Specialised healthcare, on a single tech platform, \nsimplifying access for anyone, anywhere',
-                  style: GoogleFonts.roboto(
-                      fontSize: 12,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      wordSpacing: 3),
+                SizedBox(
+                  height: s.height / 30,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(24),
-                      child: Container(
-                          width: 150,
-                          height: 250,
-                          child: Image.network(
-                            OnBoardNetworkImage().onboardDoctorImage,
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 100),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(24),
-                        child: Container(
-                            width: 150,
-                            height: 250,
-                            child: Image.network(
-                              SplashNetworkImage().splashLogoImage,
-                              fit: BoxFit.cover,
-                            )),
-                      ),
-                    ),
-                  ],
+                MainText(
+                  text: AppLocalizations.of(context).onboard_info_text,
+                  size: 12,
+                  fontWeight: FontWeight.w400,
                 ),
-                Row(
-                  children: [
-                    FloatingActionButton(
-                      onPressed: () {},
-                      backgroundColor: const Color.fromRGBO(0, 220, 167, 1),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        size: 20,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Text(
-                        'Get\nstarted',
-                        style: GoogleFonts.roboto(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
+                OnBoardBody(s: s),
+                SizedBox(
+                  height: s.height / 40,
                 ),
+                const OnBoardBottom(),
               ],
             ),
           ),
@@ -108,6 +61,5 @@ class OnBoardView extends StatelessWidget {
   }
 }
 
-/*
 
-*/ 
+

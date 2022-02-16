@@ -7,18 +7,28 @@ class BottomNavigationAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      color: Colors.transparent,
+    return BottomNavigationBar(
+      backgroundColor: Colors.transparent,
       elevation: 0,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.home_outlined),),
-          IconButton(onPressed: (){}, icon: Icon(Icons.person_outlined),),
-          IconButton(onPressed: (){}, icon: Icon(Icons.calendar_today_outlined),),
-          IconButton(onPressed: (){}, icon: Icon(Icons.notifications_active_outlined)),
-        ],
-      ),
+      type: BottomNavigationBarType.fixed,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: CircleAvatar(child: Icon(Icons.home_outlined, color: Colors.white,), backgroundColor: Color.fromRGBO(0, 220, 167, 1), radius: 25,),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: CircleAvatar(child: Icon(Icons.person_outlined, color: Colors.grey,), backgroundColor: Colors.transparent, radius: 25,),
+          label: 'Profile',
+        ),
+        BottomNavigationBarItem(
+          icon: CircleAvatar(backgroundColor: Colors.transparent, child: Icon(Icons.calendar_today_outlined, color: Colors.grey), radius: 25,),
+          label: 'Calender',
+        ),
+        BottomNavigationBarItem(
+          icon: CircleAvatar(backgroundColor: Colors.transparent, child: Icon(Icons.notifications_active_outlined, color: Colors.grey), radius: 25,),
+          label: 'Notification',
+        ),
+      ],
     );
   }
 }

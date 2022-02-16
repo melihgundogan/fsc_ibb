@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fsc_ibb/utils/colors.dart';
 import 'package:fsc_ibb/utils/network.dart';
-import 'package:fsc_ibb/views/home/home_view.dart';
 import 'package:fsc_ibb/views/login/login_view.dart';
 import 'package:fsc_ibb/views/on_board/on_board_view.dart';
-import 'package:fsc_ibb/views/profile/profile_view.dart';
 import 'package:fsc_ibb/views/sign_up/sign_up_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:stacked/stacked.dart';
 import 'splash_view_model.dart';
@@ -16,6 +15,9 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final s = MediaQuery.of(context).size;
+
     return ViewModelBuilder<SplashViewModel>.reactive(
       builder: (BuildContext context, SplashViewModel viewModel, Widget _) {
         return Material(
@@ -23,10 +25,13 @@ class SplashView extends StatelessWidget {
             image: Image.network(SplashNetworkImage().splashLogoImage),
             photoSize: 200,
             seconds: 3,
-            navigateAfterSeconds: SignUpView(),
+            navigateAfterSeconds: OnBoardView(),
             loaderColor: SplashColors().loaderColor,
             backgroundColor: SplashColors().bgColor,
-            title: Text('Medical App'),
+            title: Text('Medical App', style: GoogleFonts.roboto(
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
+              wordSpacing: 3)),
           ),
         );
       },

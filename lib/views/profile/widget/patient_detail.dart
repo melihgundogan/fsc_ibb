@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:fsc_ibb/utils/colors.dart';
+import 'package:fsc_ibb/widgets/custom_widgets/main_text.dart';
 
 class PatientDetails extends StatelessWidget {
   const PatientDetails({
@@ -9,29 +11,32 @@ class PatientDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = MediaQuery.of(context).size;
     return Container(
       color: Colors.transparent,
-      width: 350,
-      height: 170,
+      width: s.width / 1.1,
+      height: s.height / 4.5,
       child: Column(
         children: [
           const Informations(
             title: 'Name',
-            profile_info: 'Jessica',
+            profile_info: 'Melih',
           ),
           const Informations(
             title: 'Surname',
-            profile_info: 'Simpson',
+            profile_info: 'Gundogan',
           ),
           const Informations(
             title: 'Date of birth',
-            profile_info: '16 July 1990',
-          ),const Informations(
+            profile_info: '13/05/2000',
+          ),
+          const Informations(
             title: 'City',
-            profile_info: 'London',
-          ),const Informations(
+            profile_info: 'Istanbul',
+          ),
+          const Informations(
             title: 'Country',
-            profile_info: 'United Kingdom',
+            profile_info: 'Turkey',
           ),
         ],
       ),
@@ -50,11 +55,24 @@ class Informations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.symmetric(vertical: s.height / 100),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(title), Text(profile_info)],
+        children: [
+          MainText(
+            text: title,
+            color: Colors.grey.shade500,
+            size: 13,
+          ),
+          MainText(
+            text: profile_info,
+            color: HomeColors().nameColor,
+            size: 13,
+          ),
+        ],
       ),
     );
   }
